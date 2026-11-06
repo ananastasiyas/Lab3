@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Доска публикаций</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="page">
+    <header class="page-header">
+      <h1>Доска публикаций<span class="title-dot">.</span></h1>
+    </header>
+
+    <section class="panel" aria-labelledby="posts-title">
+      <div class="panel-heading">
+        <h2 id="posts-title">Публикации</h2>
+        <button type="button" id="load-posts">Загрузить публикации</button>
+      </div>
+      <div aria-label="Список публикаций" id="posts"></div>
+    </section>
+
+    <section class="panel" aria-labelledby="new-post-title">
+      <div class="panel-heading">
+        <h2 id="new-post-title">Новая публикация</h2>
+      </div>
+      <form id="post-form" novalidate>
+        <label for="title">Заголовок</label>
+        <input id="title" name="title" type="text" placeholder="Введите заголовок">
+
+        <label for="body">Текст</label>
+        <textarea id="body" name="body" rows="4" placeholder="Введите текст публикации"></textarea>
+
+        <button type="submit" id="create-post">Создать публикацию</button>
+      </form>
+    </section>
+
+    <p id="message" role="status" aria-live="polite"></p>
+  </main>
+</body>
+</html>

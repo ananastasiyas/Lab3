@@ -1,0 +1,188 @@
+:root {
+  color-scheme: light;
+  --ink: #342338;
+  --muted: #756476;
+  --accent: #b83d83;
+  --accent-dark: #952965;
+  --line: #f1dce8;
+  --soft: #fff5fa;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 60px 20px 80px;
+  background:
+    radial-gradient(ellipse at 12% 0%, #f9cee5 0, transparent 39%),
+    radial-gradient(ellipse at 95% 30%, #f9e3ef 0, transparent 42%),
+    #fff8fc;
+  color: var(--ink);
+  font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+}
+
+.page {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.page-header { margin-bottom: 28px; }
+
+h1 {
+  margin: 0;
+  font-size: clamp(32px, 5vw, 44px);
+  font-weight: 800;
+  letter-spacing: -1.9px;
+  line-height: 1.2;
+}
+
+.title-dot { color: #d45b99; }
+
+.panel {
+  margin-bottom: 22px;
+  padding: 28px 32px;
+  background: #fff;
+  border: 1px solid #f3e5ed;
+  border-radius: 22px;
+  box-shadow: 0 15px 42px rgb(110 45 82 / 7%), 0 2px 6px rgb(110 45 82 / 3%);
+}
+
+.panel-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  margin: 0;
+  font-size: 21px;
+  font-weight: 750;
+  letter-spacing: -0.65px;
+}
+
+button {
+  border: 0;
+  border-radius: 11px;
+  padding: 12px 19px;
+  background: linear-gradient(115deg, #d45b99, #b83d83);
+  color: #fff;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+  box-shadow: 0 5px 12px rgb(184 61 131 / 16%);
+  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  filter: brightness(.97);
+  box-shadow: 0 9px 19px rgb(184 61 131 / 23%);
+}
+
+button:active:not(:disabled) { transform: translateY(0); }
+button:focus-visible { outline: 3px solid #e9a3cb; outline-offset: 3px; }
+button:disabled { opacity: .55; cursor: not-allowed; box-shadow: none; }
+
+#posts:empty {
+  min-height: 112px;
+  display: grid;
+  place-items: center;
+  background: var(--soft);
+  border: 1px dashed #ebc8dc;
+  border-radius: 14px;
+}
+
+#posts:empty::before {
+  content: "Публикации появятся здесь";
+  color: #997a8c;
+  font-size: 14px;
+}
+
+#posts article {
+  padding: 20px 22px;
+  margin-bottom: 12px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: linear-gradient(135deg, #fffafd, #fff);
+}
+
+#posts article:last-child { margin-bottom: 0; }
+
+#posts h3 {
+  margin: 0 0 8px;
+  font-size: 17px;
+  line-height: 1.4;
+  font-weight: 750;
+  overflow-wrap: anywhere;
+}
+
+#posts p {
+  margin: 0;
+  color: var(--muted);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+#posts p + p { margin-top: 8px; }
+
+form { display: flex; flex-direction: column; }
+
+label {
+  margin-bottom: 7px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+input, textarea {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 13px 15px;
+  border: 1px solid #e9d5e1;
+  border-radius: 11px;
+  background: #fffcfe;
+  color: var(--ink);
+  font: inherit;
+  font-size: 15px;
+  transition: border-color .18s ease, box-shadow .18s ease;
+}
+
+input::placeholder, textarea::placeholder { color: #ae9baa; }
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: #ce6aa2;
+  box-shadow: 0 0 0 4px rgb(206 106 162 / 12%);
+}
+
+textarea { min-height: 116px; resize: vertical; }
+form button { align-self: flex-start; }
+
+#message {
+  min-height: 1.5em;
+  margin: 0 5px;
+  font-size: 14px;
+  font-weight: 650;
+  color: var(--muted);
+}
+
+#message.error { color: #c52242; }
+#message.success { color: #267447; }
+
+@media (max-width: 600px) {
+  body { padding: 30px 14px 50px; }
+  .page-header { margin-bottom: 22px; }
+  .panel { padding: 22px 18px; border-radius: 17px; }
+  .panel-heading { align-items: flex-start; flex-direction: column; gap: 13px; }
+  #load-posts { width: 100%; }
+  #posts article { padding: 17px; }
+  form button { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  button, input, textarea { transition: none; }
+}
